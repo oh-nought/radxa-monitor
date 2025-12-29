@@ -16,9 +16,9 @@ int main() {
         cout << "CPU Usage: " << fixed << setprecision(2) << cpu << endl;
         cout << "Temperature in C: " << temp.temp_c << endl;
         cout << "Temperature in F: " << temp.temp_f << endl;
-        cout << "Total Memory: " << fixed << setprecision(2) << memory.total_memory << endl;
-        cout << "Used Memory: " << fixed << setprecision(2) << memory.used_memory << endl;
-        cout << "Cached Memory: " << fixed << setprecision(2) << memory.cached_memory << endl;
+        cout << "Total Memory: " << fixed << setprecision(3) << memory.total_memory << endl;
+        cout << "Used Memory: " << fixed << setprecision(3) << memory.used_memory << endl;
+        cout << "Cached Memory: " << fixed << setprecision(3) << memory.cached_memory << endl;
         cout << "\n" << endl;
         
         this_thread::sleep_for(chrono::seconds(3));
