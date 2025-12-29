@@ -14,10 +14,11 @@ int main() {
     
         cout << "CPU Usage: " << cpu << endl;
         cout << "Temperature in C: " << temp.temp_c << endl;
-        cout << "Temperature in F: " << temp.temp_c << endl;
+        cout << "Temperature in F: " << temp.temp_f << endl;
         cout << "Total Memory: " << memory.total_memory << endl;
         cout << "Used Memory: " << memory.used_memory << endl;
-        cout << "Cached Memory: " << memory.cached_memory << endl;  
+        cout << "Cached Memory: " << memory.cached_memory << endl;
+        cout << "\n" << endl;
         
         this_thread::sleep_for(chrono::seconds(3));
     }
