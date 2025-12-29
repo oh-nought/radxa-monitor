@@ -12,9 +12,6 @@ float Readings::read_cpu_percentage() {
 
     ifile >> cpu >> this->current_snapshot.user_time >> this->current_snapshot.nice_time >> this->current_snapshot.sys_time >> this->current_snapshot.idle_time >> this->current_snapshot.iowait_time >> this->current_snapshot.irq_time >> current_snapshot.softirq_time;
 
-    cout << "user: " << this->current_snapshot.user_time << endl;
-    cout << "idle: " << this->current_snapshot.idle_time << endl;
-
     if (Readings::is_initialized == false) {
         this->previous_snapshot = this->current_snapshot;
         this->is_initialized = true;
@@ -29,10 +26,6 @@ float Readings::read_cpu_percentage() {
         int total_diff = total_curr - total_prev;
         int idle_diff = idle_curr - idle_prev;
         int busy_diff = total_diff - idle_diff;
-
-        cout << "total diff: " << total_diff << endl;
-        cout << "idle diff: " << idle_diff << endl;
-        cout << "busy diff: " << busy_diff << endl;
 
         // if no time passed
         if (total_diff == 0) {
