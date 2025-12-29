@@ -15,7 +15,7 @@ float Readings::read_cpu_percentage() {
     if (Readings::is_initialized == false) {
         this->previous_snapshot = this->current_snapshot;
         this->is_initialized = true;
-        return -1;
+        return 0;
     } else {
         // calculate total clock time
         int total_prev = this->previous_snapshot.user_time + this->previous_snapshot.nice_time + this->previous_snapshot.sys_time + this->previous_snapshot.idle_time + this->previous_snapshot.iowait_time + this->previous_snapshot.irq_time + this->previous_snapshot.softirq_time;
