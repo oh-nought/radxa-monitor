@@ -9,6 +9,8 @@ int main() {
     Readings readings;
 
     for (int i = 0; i < 5; i++) {
+        this_thread::sleep_for(chrono::seconds(3));
+        
         auto cpu = readings.read_cpu_percentage();
         auto temp = readings.read_temperature();
         auto memory = readings.read_memory();
@@ -20,8 +22,6 @@ int main() {
         cout << "Used Memory: " << fixed << setprecision(3) << memory.used_memory << endl;
         cout << "Cached Memory: " << fixed << setprecision(3) << memory.cached_memory << endl;
         cout << "\n" << endl;
-        
-        this_thread::sleep_for(chrono::seconds(3));
     }
 
 }
