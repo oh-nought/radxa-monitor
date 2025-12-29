@@ -23,9 +23,9 @@ struct Memory {
 
 class Readings {
 private:
-    Snapshot previous_snapshot;
-    Snapshot current_snapshot;
-    bool is_initialized;
+    Snapshot previous_snapshot = {};
+    Snapshot current_snapshot = {};
+    bool is_initialized = false;
 
 public:
     float read_cpu_percentage();
