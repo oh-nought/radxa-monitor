@@ -10,7 +10,7 @@ int main() {
         string cpu_data;
         ifstream ifile("/proc/stat");
         std::getline(ifile, cpu_data);
-        cout << cpu_data;
+        cout << cpu_data << endl;
         this_thread::sleep_for(chrono::seconds(3));
     }
 }
