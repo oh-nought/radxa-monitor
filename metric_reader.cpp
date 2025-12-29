@@ -45,8 +45,8 @@ Temperature Readings::read_temperature() {
     ifstream ifile("/sys/class/thermal/thermal_zone0/temp");
     int raw_temp;
     ifile >> raw_temp;
-    int temp_c = raw_temp / 1000;
-    int temp_f = (temp_c * 1.8) + 32;
+    float temp_c = raw_temp / 1000;
+    float temp_f = (temp_c * 1.8) + 32;
 
     temps.temp_c = temp_c;
     temps.temp_f = temp_f;
@@ -59,7 +59,7 @@ Memory Readings::read_memory() {
     ifstream ifile("/proc/meminfo");
 
     string key, unit;
-    int value_kb;
+    double value_kb;
 
     while (ifile >> key >> value_kb >> unit) {
         if (key == "MemTotal:") {
