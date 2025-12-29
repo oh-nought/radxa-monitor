@@ -8,7 +8,7 @@ float Readings::read_cpu_percentage() {
     ifstream ifile("/proc/stat");
     
     string cpu;
-    int user, nice, system, idle, iowait, irq, softirq;
+    float user, nice, system, idle, iowait, irq, softirq;
 
     ifile >> cpu >> this->current_snapshot.user_time >> this->current_snapshot.nice_time >> this->current_snapshot.sys_time >> this->current_snapshot.idle_time >> this->current_snapshot.iowait_time >> this->current_snapshot.irq_time >> current_snapshot.softirq_time;
 
@@ -45,8 +45,8 @@ Temperature Readings::read_temperature() {
     ifstream ifile("/sys/class/thermal/thermal_zone0/temp");
     int raw_temp;
     ifile >> raw_temp;
-    float temp_c = raw_temp / 1000;
-    float temp_f = (temp_c * 1.8) + 32;
+    int temp_c = raw_temp / 1000;
+    int temp_f = (temp_c * 1.8) + 32;
 
     temps.temp_c = temp_c;
     temps.temp_f = temp_f;
