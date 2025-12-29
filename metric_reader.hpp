@@ -22,10 +22,12 @@ struct Memory {
 };
 
 class Readings {
+private:
     Snapshot previous_snapshot;
     Snapshot current_snapshot;
     bool is_initialized;
 
+public:
     float read_cpu_percentage();
     Temperature read_temperature();
     Memory read_memory();
