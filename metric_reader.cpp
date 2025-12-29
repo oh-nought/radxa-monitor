@@ -39,7 +39,7 @@ float Readings::read_cpu_percentage() {
             return 0.0f;
         }
 
-        float cpu_percent = (busy_diff / total_diff) * 100;
+        float cpu_percent = (static_cast<float>(busy_diff) / static_cast<float>(total_diff)) * 100;
 
         this->previous_snapshot = this->current_snapshot;
 
