@@ -63,11 +63,11 @@ Memory Readings::read_memory() {
 
     while (ifile >> key >> value_kb >> unit) {
         if (key == "MemTotal:") {
-            memory.total_memory = value_kb / 100000;
+            memory.total_memory = value_kb / 1000000;
         } else if (key == "MemAvailable:") {
-            memory.used_memory = memory.total_memory - (value_kb / 100000);
+            memory.used_memory = memory.total_memory - (value_kb / 1000000);
         } else if (key == "Cached:") {
-            memory.cached_memory = value_kb / 100000;
+            memory.cached_memory = value_kb / 1000000;
         }
     }
 
