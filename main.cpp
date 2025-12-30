@@ -1,27 +1,37 @@
 #include "metric_reader.hpp"
+#include "metrics_state.hpp"
+#include "server.hpp"
 #include <iostream>
 #include <chrono>
 #include <thread>
-#include <iomanip>
 using namespace std;
 
-int main() {
-    Readings readings;
+void collection_thread(MetricsState* state, Readings* readings) {
+    using namespace chrono;
 
-    for (int i = 0; i < 5; i++) {
-        this_thread::sleep_for(chrono::seconds(3));
-        
-        auto cpu = readings.read_cpu_percentage();
-        auto temp = readings.read_temperature();
-        auto memory = readings.read_memory();
-    
-        cout << "CPU Usage: " << fixed << setprecision(2) << cpu << endl;
-        cout << "Temperature in C: " << temp.temp_c << endl;
-        cout << "Temperature in F: " << temp.temp_f << endl;
-        cout << "Total Memory: " << fixed << setprecision(3) << memory.total_memory << endl;
-        cout << "Used Memory: " << fixed << setprecision(3) << memory.used_memory << endl;
-        cout << "Cached Memory: " << fixed << setprecision(3) << memory.cached_memory << endl;
-        cout << "\n" << endl;
+    while (true) {
+        float cpu = readings->read_cpu_percentage();
+        auto temp = readings->read_temperature();
+        auto mem = readings->read_memory();
+
+        state->update(cpu, temp, mem);
+        this_thread::sleep_for(seconds(3));
     }
+}
 
+void server_thread(MetricsState* state) {
+    SocketServer server("/tmp/radxa_metrics.sock");
+    server.run(state);
+}
+
+int main() {
+    MetricsState state;
+    Readings readings;
+    
+    thread collector(collection_thread, &state, &readings);
+    thread server(server_thread, &state);
+
+    collector.join();
+    server.join();
+    return 0;
 }
