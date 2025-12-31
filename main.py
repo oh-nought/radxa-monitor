@@ -48,4 +48,6 @@ class Monitor:
                     z_score = self.detectors[metric_name].get_z_score(value)
                     print(f"anomaly: {metric_name} = {value} (z={z_score})")
 
+                print(f"{metric_name}: {value}")
+            
             time.sleep(2)
