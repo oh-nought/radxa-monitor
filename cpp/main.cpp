@@ -1,6 +1,6 @@
-#include "metric_reader.hpp"
-#include "metrics_state.hpp"
-#include "server.hpp"
+#include "include/metric_reader.hpp"
+#include "include/metrics_state.hpp"
+#include "include/server.hpp"
 #include <iostream>
 #include <chrono>
 #include <thread>
