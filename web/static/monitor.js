@@ -22,7 +22,7 @@ class Monitor {
             document.getElementById('svg-container').innerHTML = svg_text;
         } catch (error) {
             console.error("Failed to load SVG:", error);
-            document.getElementById('svg-container').innerHTMl = '<p style="color: red;">Failed to load board visual</p>';
+            document.getElementById('svg-container').innerHTML = '<p style="color: red;">Failed to load board visual</p>';
         }
     }
 
