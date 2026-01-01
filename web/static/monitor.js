@@ -26,7 +26,6 @@ class Monitor {
             svg.removeAttribute('width');
             svg.removeAttribute('height');
             svg.setAttribute('viewBox', '0 0 1870 960');
-            svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
         } catch (error) {
             console.error("Failed to load SVG:", error);
             document.getElementById('svg-container').innerHTML = '<p style="color: red;">Failed to load board visual</p>';
