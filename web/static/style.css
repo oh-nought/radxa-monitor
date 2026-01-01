@@ -43,9 +43,7 @@ body {
 }
 
 #svg-container {
+    transform: scale(0.3);
     width: 100px;
-    height: 100px;
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
