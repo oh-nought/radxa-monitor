@@ -34,7 +34,7 @@ class Monitor {
             const stop2 = gradient_stops[i + 1];
 
             if (percentage >= stop1.position && percentage <= stop2.position) {
-                const range = stop.position - stop1.position;
+                const range = stop2.position - stop1.position;
                 const position_in_range = percentage - stop1.position;
                 const ratio = position_in_range / range;
 
@@ -177,7 +177,7 @@ class Monitor {
         }
     }
 
-        update_heatmap(type, value) {
+    update_heatmap(type, value) {
         const svg = document.querySelector('#svg-container svg');
         if (!svg) return;
 
