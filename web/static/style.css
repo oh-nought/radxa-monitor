@@ -58,6 +58,6 @@ header {
 }
 
 #svg-container svg {
-    width: 100%;
-    height: auto;
+    width: 960px;
+    height: 1870px;
 }
