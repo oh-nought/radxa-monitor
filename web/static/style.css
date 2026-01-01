@@ -46,19 +46,12 @@ header {
 }
 
 .content {
-    display: grid;
-}
-
-.board-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
 }
 
 #svg-container {
     width: 100%;
-    display: flex;
-    justify-content: center;
 }
 
 #svg-container svg {
