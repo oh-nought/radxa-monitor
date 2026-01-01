@@ -49,12 +49,8 @@ header {
     display: flex;
 }
 
-.board-container {
-    display: flex;
-}
-
 #svg-container {
-    width: 100px;
+    width: 100%;
 }
 
 #svg-container svg {
