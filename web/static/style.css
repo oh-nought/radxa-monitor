@@ -38,9 +38,6 @@ body {
     50% { opacity: 0.5; }
 }
 
-.content {
-    display: grid;
-}
 
 #svg-container {
     transform: scale(0.3);
