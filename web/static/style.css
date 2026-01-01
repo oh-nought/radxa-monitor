@@ -47,7 +47,10 @@ header {
 
 .content {
     display: flex;
-    flex-direction: row;
+}
+
+.board-container {
+    display: flex;
 }
 
 #svg-container {
