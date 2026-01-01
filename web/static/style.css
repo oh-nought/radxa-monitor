@@ -15,6 +15,13 @@ body {
 .status-indicator {
     display: flex;
     align-items: center;
+    gap: 5px;
+}
+
+header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 .status-indicator .dot {
@@ -38,6 +45,9 @@ body {
     50% { opacity: 0.5; }
 }
 
+.content {
+    display: grid;
+}
 
 #svg-container {
     transform: scale(0.3);

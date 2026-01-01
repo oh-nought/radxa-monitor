@@ -125,20 +125,7 @@ class Monitor {
 
     update_status(status) {
         const indicator = document.getElementById('connection-status');
-        const text = indicator.querySelector('.text');
         indicator.className = `status-indicator ${status}`;
-
-        switch(status) {
-            case 'connected':
-                text.textContent = 'Connected';
-                break;
-            case 'disconnected':
-                text.textContent = 'Disconnected';
-                break;
-            case 'connecting':
-                text.textContent = 'Connecting...';
-                break;
-        }
     }
 
     update_metrics(data) {
@@ -147,14 +134,14 @@ class Monitor {
 
         const cpu_value = metrics.cpu_percent;
         if (cpu_value !== "Initializing..." && cpu_value != undefined) {
-            document.getElementById('cpu-value').textContent = cpu_value.toFixed(1);
+            document.getElementById('cpu-value').textContent = cpu_value.toFixed(1) + '%';
             this.update_heatmap('cpu', cpu_value);
         }
 
         const temp_c = metrics.temperature_c;
         // const temp_f = metrics.temperature_f;
         if (temp_c !== undefined) {
-            document.getElementById('temp-value').textContent = temp_c;
+            document.getElementById('temp-value').textContent = temp_c + '°C';
             this.update_heatmap('temperature', temp_c);
         }
 
@@ -164,7 +151,7 @@ class Monitor {
             const mem_percent = (mem_used / mem_total) * 100;
             document.getElementById('ram-value').textContent = mem_percent.toFixed(1) + '%';
             document.getElementById('ram-used').textContent = mem_used.toFixed(2);
-            document.getElementById('ram-total').textContent = mem_total.toFixed(2);
+            document.getElementById('ram-total').textContent = mem_total.toFixed(2) + 'GB';
             this.update_heatmap('memory', mem_percent);
         }
 
