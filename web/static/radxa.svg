@@ -22,8 +22,8 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="0.5840177"
-     inkscape:cx="243.99945"
-     inkscape:cy="54.79286"
+     inkscape:cx="83.045428"
+     inkscape:cy="688.3353"
      inkscape:window-width="1680"
      inkscape:window-height="997"
      inkscape:window-x="1180"
@@ -6510,7 +6510,7 @@
        id="path2353"
        sodipodi:insensitive="true" />
     <path
-       style="display:none;fill:#545058;fill-opacity:1"
+       style="display:inline;fill:#545058;fill-opacity:1"
        d="m 911.53617,1325.5442 2.6942,-167.9382 2.69419,-165.24396 -1.79613,-52.08778 299.05567,-2.6942 118.5446,2.6942 3.5923,8.98065 -0.8981,307.13829 -0.898,74.5394 h -284.6867 z"
        id="cpu_fill"
        sodipodi:insensitive="true"
