@@ -19,7 +19,14 @@ class Monitor {
         try {
             const response = await fetch('/static/radxa.svg');
             const svg_text = await response.text();
-            document.getElementById('svg-container').innerHTML = svg_text;
+            const container = document.getElementById('svg-container');
+            container.innerHTML = svg_text;
+
+            const svg = container.querySelector('svg');
+            svg.removeAttribute('width');
+            svg.removeAttribute('height');
+            svg.setAttribute('viewBox', '0 0 2048 2048');
+            svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
         } catch (error) {
             console.error("Failed to load SVG:", error);
             document.getElementById('svg-container').innerHTML = '<p style="color: red;">Failed to load board visual</p>';
