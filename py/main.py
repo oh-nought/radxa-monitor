@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
@@ -45,7 +45,7 @@ async def get_history(metric_name, samples=100):
     return {"metric": metric_name, "data": data}
 
 @app.websocket("/ws")
-async def websocket_endpoint(websocket):
+async def websocket_endpoint(websocket: WebSocket):
     await monitor.connect(websocket)
     try:
         # sending initial data
@@ -55,7 +55,7 @@ async def websocket_endpoint(websocket):
 
         while True: # to keep connection alive
             try:
-                data = await asyncio.wait_for(websocket.recieve_text(), timeout=60.0)
+                data = await asyncio.wait_for(websocket.receive_text(), timeout=60.0)
                 await websocket.send_text(json.dumps({"type": "pong"}))
             except:
                 await websocket.send_text(json.dumps({"type": "ping"}))
