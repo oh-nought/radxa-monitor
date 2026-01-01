@@ -74,7 +74,7 @@ class Monitor {
         const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
         const ws_url = `${protocol}//${window.location.host}/ws`;
 
-        this.ws = new WebSocket(this.ws_url);
+        this.ws = new WebSocket(ws_url);
         this.ws.onopen = () => {
             this.reconnects = 0;
             this.update_status('connected');
