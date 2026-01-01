@@ -331,5 +331,5 @@ class Monitor {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    new RadxaMonitor();
+    new Monitor();
 })
