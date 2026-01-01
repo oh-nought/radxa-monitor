@@ -44,6 +44,5 @@ body {
 
 #svg-container {
     transform: scale(0.3);
-    width: 100px;
     display: flex;
 }
