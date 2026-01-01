@@ -50,14 +50,18 @@ header {
 }
 
 .board-container {
-    grid-row: 1/ 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #svg-container {
+    width: 100%;
     display: flex;
+    justify-content: center;
 }
 
 #svg-container svg {
-    width: 30%;
+    width: 100%;
     height: auto;
 }
