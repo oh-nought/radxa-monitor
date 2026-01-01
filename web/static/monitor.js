@@ -151,7 +151,7 @@ class Monitor {
             const mem_percent = (mem_used / mem_total) * 100;
             document.getElementById('ram-value').textContent = mem_percent.toFixed(1) + '%';
             document.getElementById('ram-used').textContent = mem_used.toFixed(2);
-            document.getElementById('ram-total').textContent = mem_total.toFixed(2) + 'GB';
+            document.getElementById('ram-total').textContent = mem_total.toFixed(2) + ' GB';
             this.update_heatmap('memory', mem_percent);
         }
 
