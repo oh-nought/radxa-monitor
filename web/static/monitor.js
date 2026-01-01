@@ -316,7 +316,7 @@ class Monitor {
             .replace(/\b\w/g, l => l.toUpperCase());
     }
 
-    format_value(metric) {
+    format_value(metric, value) {
         if (metric.includes('temperature_c')) {
             return `${value}C`
         } 
