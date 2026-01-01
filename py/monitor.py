@@ -97,7 +97,7 @@ class Monitor:
 
         for connection in self.active:
             try:
-                await connection.sent_text(message)
+                await connection.send_text(message)
             except Exception as e:
                 print(f"Failed to send to client: {e}")
                 dead.append(connection)
