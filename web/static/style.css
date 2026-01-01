@@ -50,6 +50,10 @@ header {
 } */
 
 #svg-container {
-    transform: scale(0.3);
     display: flex;
+}
+
+#svg-container svg {
+    width: 30%;
+    height: auto;
 }
