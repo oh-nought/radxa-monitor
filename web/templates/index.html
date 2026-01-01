@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Radxa Zero 3W Monitor</title>
+        <link rel="stylesheet" href="../static/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>radxa zero 3w system monitor</h1>
+                <div class="status-indicator" id="connection-status">
+                    <span class="dot"></span>
+                    <span class="text">Connecting...</span>
+                </div>
+            </header>
+
+            <div class="content">
+                <div class="board-container">
+                    <div id="svg-container"></div>
+                </div>
+            </div>
+
+            <div class="metrics-panel">
+                <div id="cpu-metrics">
+                    <h3>cpu usage</h3>
+                    <div class="metric-value" id="cpu-value">-</div>
+                    <div class="metric-unit">%</div>
+                    <div class="anomaly-indicator" id="cpu-anomaly"></div>
+                </div>
+
+                <div id="temp-metrics">
+                    <h3>temperature</h3>
+                    <div class="metric-value" id="temp-value">-</div><div class="metric-unit">C</div>
+                    <div class="anomaly-indicator" id="temp-anomaly"></div>
+                </div>
+
+                <div id="ram-metrics">
+                    <h3>ram usage</h3>
+                    <div class="metric-value" id="ram-value">-</div>
+                    <div class="metric-unit">
+                        <span id="ram-used">-</span> / <span id="ram-total">-</span> GB
+                    </div>
+                    <div class="anomaly-indicator" id="cpu-anomaly"></div>
+                </div>
+            </div>
+
+            <div class="anomaly-log">
+                <h3>anomaly log</h3>
+                <div id="anomaly-list"></div>
+            </div>
+        </div>
+
+        <script src="../static/monitor.js"></script>
+    </body>
+</html>

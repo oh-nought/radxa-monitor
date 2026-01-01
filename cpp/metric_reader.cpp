@@ -1,7 +1,7 @@
+#include "include/metric_reader.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "metric_reader.hpp"
 using namespace std;
 
 float Readings::read_cpu_percentage() {

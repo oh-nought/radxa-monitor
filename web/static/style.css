@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20px;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+}
+
+.status-indicator .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.status-indicator.connected .dot {
+    background: #52d156;
+}
+
+.status-indicator.disconnected .dot {
+    background-color: #d4372c;
+    animation: none;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.content {
+    display: grid;
+}
+
+#svg-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

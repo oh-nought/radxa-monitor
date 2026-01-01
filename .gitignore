@@ -1,3 +1,7 @@
 /.vscode/
-/metric_reader.dSYM/
-/metric_reader
+/.venv
+
+cpp/radxa_monitor
+cpp/*.o
+
+/tmp/

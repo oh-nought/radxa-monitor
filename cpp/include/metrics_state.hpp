@@ -1,7 +1,7 @@
 #pragma once
+#include "metric_reader.hpp"
 #include <mutex>
 #include <string>
-#include "metric_reader.hpp"
 using namespace std;
 
 class MetricsState {
