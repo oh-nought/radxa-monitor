@@ -45,9 +45,13 @@ header {
     50% { opacity: 0.5; }
 }
 
-/* .content {
+.content {
     display: grid;
-} */
+}
+
+.board-container {
+    grid-row: 1/ 2;
+}
 
 #svg-container {
     display: flex;

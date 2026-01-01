@@ -220,7 +220,7 @@ class Monitor {
             const color = this.get_color(percentage, gradient_stops);
             fill_element.style.fill = color;
             fill_element.style.fillOpacity = '0.5';
-            fill_element.style.transition = 'fill 0.5 ease';
+            fill_element.style.transition = 'fill 0.5s ease';
         } else {
             console.error(`Couldn't find SVG group for ${type}`);
         }
@@ -250,7 +250,7 @@ class Monitor {
         }
 
         if (metric.includes('temperature') || metric.includes('temp')) {
-            return 'tmep-anomaly';
+            return 'temp-anomaly';
         }
 
         if (metric.includes('memory')) {
