@@ -164,7 +164,7 @@ class Monitor {
             const mem_percent = (mem_used / mem_total) * 100;
             document.getElementById('memory-value').textContent = mem_percent.toFixed(1) + '%';
             document.getElementById('memory-used').textContent = mem_used.toFixed(2);
-            document.getElementById('memory-total').textContent. mem_total.toFixed(2);
+            document.getElementById('memory-total').textContent = mem_total.toFixed(2);
             this.update_heatmap('memory', mem_percent);
         }
 
