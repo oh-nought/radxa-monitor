@@ -50,10 +50,13 @@ header {
 }
 
 #svg-container {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #svg-container svg {
-    width: 480px;
-    height: 935px;
+    width: 100%;
+    height: auto;
+    max-height: 655px;
 }
