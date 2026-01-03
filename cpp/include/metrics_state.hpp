@@ -10,7 +10,6 @@ private:
 
     float cpu_percent;
     int temperature_c;
-    int temperature_f;
     double memory_total;
     double memory_used;
     double memory_cached;
