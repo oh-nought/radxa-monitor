@@ -25,7 +25,7 @@ class Monitor {
             const svg = container.querySelector('svg');
             svg.removeAttribute('width');
             svg.removeAttribute('height');
-            svg.setAttribute('viewBox', '0 0 480 935');
+            svg.setAttribute('viewBox', '0 0 960 1870');
             svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
         } catch (error) {
             console.error("Failed to load SVG:", error);
