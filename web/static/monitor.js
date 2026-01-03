@@ -19,18 +19,71 @@ class Monitor {
         try {
             const response = await fetch('/static/radxa.svg');
             const svg_text = await response.text();
-            const container = document.getElementById('svg-container');
-            container.innerHTML = svg_text;
+            const frame = document.getElementById('board-frame');
 
-            const svg = container.querySelector('svg');
-            svg.removeAttribute('width');
-            svg.removeAttribute('height');
-            svg.setAttribute('viewBox', '0 0 960 1870');
-            svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+            frame.setAttribute('viewBox', '0 0 1100 1870');
+            frame.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+
+            frame.innerHTML = `
+                <defs>
+                    ${this.build_gradients()}
+                </defs>
+
+                <g id="board" transform="translate(100, 00)">
+                    ${svg_text}
+                </g>
+
+                ${this.build_legends()}
+            `;
         } catch (error) {
             console.error("Failed to load SVG:", error);
             document.getElementById('svg-container').innerHTML = '<p style="color: red;">Failed to load board visual</p>';
         }
+    }
+
+    build_gradients() {
+        return `
+        <linearGradient id="cpu-gradient" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#00D40B"/>
+            <stop offset="25%" stop-color="#6FAF4C"/>
+            <stop offset="50%" stop-color="#FFEB3B"/>
+            <stop offset="75%" stop-color="#FF9800"/>
+            <stop offset="100%" stop-color="#F44336"/>
+        </linearGradient>
+        
+        <linearGradient id="temp-gradient" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#00D40B"/>
+            <stop offset="25%" stop-color="#6FAF4C"/>
+            <stop offset="50%" stop-color="#FFEB3B"/>
+            <stop offset="75%" stop-color="#FF9800"/>
+            <stop offset="100%" stop-color="#F44336"/>
+        </linearGradient>
+
+        <linearGradient id="memory-gradient" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#E1BEE7"/>
+            <stop offset="100%" stop-color="#6A1B9A"/>
+        </linearGradient>
+        `;
+    }
+
+    build_legends() {
+        const board_height = 1870;
+
+        return `
+        <g id="legends" transform="translate(0,0)>
+            <rect x="20 y="100" width="20" height="${board_height - 200}" fill="url(#cpu-gradient)"/>
+            <textx="20" y="70" font-size="12" font-weight="bold">CPU</text>
+            <text x="50" y="100" font-size="12">High</text>
+            <text x="50" y="${board_height - 100}" font-size="12">Low</text>
+            
+            <rect x="60" y="60" width="20" height="${board_height - 200}" fill="url(#temp-gradient)"/>
+            <text>Memory</text>
+            
+            <rect x="100" y="100" width="20" height="${board_height - 200}" fill="url(#memory-gradient)"/>
+            <text>Memory</text>
+            <text></text>
+        </g>
+        `
     }
 
     get_color(percentage, gradient_stops) {
