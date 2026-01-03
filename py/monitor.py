@@ -8,7 +8,6 @@ class Monitor:
     metrics = {
         "cpu_percent": {"alpha": 0.2, "threshold": 3.0, "track": True},
         "temperature_c": {"alpha": 0.1, "threshold": 3.0, "track": True},
-        "temperature_f": {"alpha": 0.1, "threshold": 3.0, "track": True},
         "memory_total_gb": {"alpha": 0.1, "threshold": 3.0, "track": False}, # constant
         "memory_used_gb": {"alpha": 0.1, "threshold": 3.0, "track": True},
         "memory_cached_gb": {"alpha": 0.1, "threshold": 3.0, "track": True},

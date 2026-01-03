@@ -46,10 +46,8 @@ Temperature Readings::read_temperature() {
     int raw_temp;
     ifile >> raw_temp;
     int temp_c = raw_temp / 1000;
-    int temp_f = (temp_c * 1.8) + 32;
 
-    temps.temp_c = temp_c;
-    temps.temp_f = temp_f;
+    temps.temp_c = temp_c; 
 
     return temps;
 }

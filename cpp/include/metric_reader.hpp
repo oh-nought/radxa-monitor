@@ -12,7 +12,6 @@ struct Snapshot {
 
 struct Temperature {
     int temp_c;
-    int temp_f;
 };
 
 struct Memory {
