@@ -21,7 +21,7 @@ class Monitor {
             const svg_text = await response.text();
             const frame = document.getElementById('board-frame');
 
-            frame.setAttribute('viewBox', '0 0 1100 1870');
+            frame.setAttribute('viewBox', '0 0 1500 1870');
             frame.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
             frame.innerHTML = `
