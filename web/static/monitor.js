@@ -341,10 +341,10 @@ class Monitor {
             return `
                 <tr>
                     <td>${time_str}</td>
-                    <td>${(entry.metric.includes('cpu') ? entry.value : 0)}</td>
-                    <td>${(entry.metric.includes('temperature') ? entry.value : 0)}</td>
-                    <td>${(entry.metric.includes('used') ? entry.value : 0)}</td>
-                    <td>${(entry.metric.includes('cached') ? entry.value : 0)}</td>
+                    <td>${(entry.metric.includes('cpu_percent') ? entry.value : 0)}</td>
+                    <td>${(entry.metric.includes('temperature_c') ? entry.value : 0)}</td>
+                    <td>${(entry.metric.includes('memory_used_gb') ? entry.value : 0)}</td>
+                    <td>${(entry.metric.includes('memory_cached_gb') ? entry.value : 0)}</td>
                 </tr>
             `;
         }).join('')
