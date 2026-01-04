@@ -43,20 +43,12 @@ class Monitor {
 
     build_gradients() {
         return `
-        <linearGradient id="cpu-gradient" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="0%" stop-color="#00D40B"/>
+        <linearGradient id="heat-gradient" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#009a08ff"/>
             <stop offset="25%" stop-color="#6FAF4C"/>
             <stop offset="50%" stop-color="#FFEB3B"/>
-            <stop offset="75%" stop-color="#FF9800"/>
-            <stop offset="100%" stop-color="#F44336"/>
-        </linearGradient>
-        
-        <linearGradient id="temp-gradient" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="0%" stop-color="#00D40B"/>
-            <stop offset="25%" stop-color="#6FAF4C"/>
-            <stop offset="50%" stop-color="#FFEB3B"/>
-            <stop offset="75%" stop-color="#FF9800"/>
-            <stop offset="100%" stop-color="#F44336"/>
+            <stop offset="75%" stop-color="#d68e23ff"/>
+            <stop offset="100%" stop-color="#ae0c00ff"/>
         </linearGradient>
 
         <linearGradient id="memory-gradient" x1="0" y1="1" x2="0" y2="0">
@@ -71,17 +63,15 @@ class Monitor {
 
         return `
         <g id="legends" transform="translate(0,0)>
-            <rect x="20 y="100" width="20" height="${board_height - 200}" fill="url(#cpu-gradient)"/>
-            <textx="20" y="70" font-size="12" font-weight="bold">CPU</text>
-            <text x="50" y="100" font-size="12">High</text>
-            <text x="50" y="${board_height - 100}" font-size="12">Low</text>
+            <rect x="0" y="0"/>        
+            <rect x="105" y="100" width="75" height="${board_height - 200}" fill="url(#heat-gradient)"/>        
+            <text x="40" y="70" font-size="40" font-weight="bold">CPU/Temp.</text>
             
-            <rect x="60" y="60" width="20" height="${board_height - 200}" fill="url(#temp-gradient)"/>
-            <text>Memory</text>
-            
-            <rect x="100" y="100" width="20" height="${board_height - 200}" fill="url(#memory-gradient)"/>
-            <text>Memory</text>
-            <text></text>
+            <rect x="275" y="100" width="75" height="${board_height - 200}" fill="url(#memory-gradient)"/>
+            <text x="265" y="70" font-size="40" font-weight="bold">RAM</text>
+
+            <text x="0" y="140" font-size="40">High -</text>
+            <text x="10" y="1750" font-size="40">Low -</text>
         </g>
         `
     }
@@ -241,8 +231,8 @@ class Monitor {
                     { position: 0, color: '#00D40B' },
                     { position: 25, color: '#6FAF4C' },
                     { position: 50, color: '#FFEB3B' },
-                    { position:75, color: '#FF9800' },
-                    { position: 100, color: '#F44336' }
+                    { position:75, color: '#d68e23ff' },
+                    { position: 100, color: '#ae0c00ff' }
                 ];
                 break;
 
@@ -257,8 +247,8 @@ class Monitor {
                     { position: 0, color: '#00D40B' },
                     { position: 25, color: '#6FAF4C' },
                     { position: 50, color: '#FFEB3B' },
-                    { position:75, color: '#FF9800' },
-                    { position: 100, color: '#F44336' }
+                    { position:75, color: '#d68e23ff' },
+                    { position: 100, color: '#ae0c00ff' }
                 ];
                 break;
 
