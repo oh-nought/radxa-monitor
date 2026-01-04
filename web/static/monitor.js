@@ -328,20 +328,20 @@ class Monitor {
     }
 
     render_log() {
-        const log_container = document.getElementById('anomaly-list');
+        const log_table = document.getElementById('anomaly-table');
         if (this.anomaly_log.length === 0) {
-            log_container.innerHTML = '<p style="color: #999; font-size: 13px;">No anomalies detected</p>';
+            log_table.innerHTML = '<p style="color: #999; font-size: 13px;">No anomalies detected</p>';
             return;
         }
 
-        log_container.innerHTML = this.anomaly_log.map(entry => {
+        log_table.innerHTML = this.anomaly_log.map(entry => {
             const date = new Date(entry.timestamp * 1000);
             const time_str = date.toLocaleDateString();
 
             return `
                 <tr>
                     <td>${time_str}</td>
-                    <td>${(entry.metric.includes('cpu_percent') ? entry.value : 0)}</td>
+                    <td>${entry.metric.includes('cpu_percent') ? entry.value : 0}</td>
                     <td>${(entry.metric.includes('temperature_c') ? entry.value : 0)}</td>
                     <td>${(entry.metric.includes('memory_used_gb') ? entry.value : 0)}</td>
                     <td>${(entry.metric.includes('memory_cached_gb') ? entry.value : 0)}</td>
