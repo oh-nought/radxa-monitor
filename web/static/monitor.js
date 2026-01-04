@@ -29,7 +29,7 @@ class Monitor {
                     ${this.build_gradients()}
                 </defs>
 
-                <g id="board" transform="translate(100, 00)">
+                <g id="board" transform="translate(400, 00)">
                     ${svg_text}
                 </g>
 
