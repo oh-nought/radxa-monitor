@@ -21,7 +21,7 @@ class Monitor {
             const svg_text = await response.text();
             const frame = document.getElementById('board-frame');
 
-            frame.setAttribute('viewBox', '0 0 1300 1870');
+            frame.setAttribute('viewBox', '0 0 1350 1870');
             frame.setAttribute('preserveAspectRatio', 'xMidYMid meet');
 
             frame.innerHTML = `
@@ -64,10 +64,10 @@ class Monitor {
         return `
         <g id="legends" transform="translate(0,0)>
             <rect x="0" y="0"/>        
-            <rect x="105" y="100" width="75" height="${board_height - 200}" fill="url(#heat-gradient)"/>        
+            <rect x="105" y="100" width="75" height="${board_height - 200}" fill="url(#heat-gradient)" stroke="black" stroke-width="4"/>        
             <text x="40" y="70" font-size="40" font-weight="bold">CPU/Temp.</text>
             
-            <rect x="275" y="100" width="75" height="${board_height - 200}" fill="url(#memory-gradient)"/>
+            <rect x="275" y="100" width="75" height="${board_height - 200}" fill="url(#memory-gradient)" stroke="black" stroke-width="4"/>
             <text x="265" y="70" font-size="40" font-weight="bold">RAM</text>
 
             <text x="0" y="140" font-size="40">High -</text>
