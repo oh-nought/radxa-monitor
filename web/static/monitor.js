@@ -70,8 +70,8 @@ class Monitor {
             <rect x="275" y="100" width="75" height="${board_height - 200}" fill="url(#memory-gradient)" stroke="black" stroke-width="4"/>
             <text x="265" y="70" font-size="40" font-weight="bold">RAM</text>
 
-            <text x="0" y="140" font-size="40">High -</text>
-            <text x="10" y="1750" font-size="40">Low -</text>
+            <text x="0" y="140" font-size="40">High</text>
+            <text x="10" y="1750" font-size="40">Low</text>
         </g>
         `
     }
@@ -197,11 +197,13 @@ class Monitor {
 
         const mem_used = metrics.memory_used_gb;
         const mem_total = metrics.memory_total_gb;
+        const mem_cached = metrics.memory_cached_gb;
         if (mem_used !== undefined && mem_total !== undefined) {
             const mem_percent = (mem_used / mem_total) * 100;
             document.getElementById('ram-value').textContent = mem_percent.toFixed(1) + '%';
             document.getElementById('ram-used').textContent = mem_used.toFixed(2);
             document.getElementById('ram-total').textContent = mem_total.toFixed(2) + ' GB';
+            document.getElementById('ram-cached').textContent = mem_cached.toFixed(2) + ' GB';
             this.update_heatmap('memory', mem_percent);
         }
 
@@ -337,12 +339,13 @@ class Monitor {
             const time_str = date.toLocaleDateString();
 
             return `
-                <div class="anomaly-entry">
-                    <div class="time">${time_str}</div>
-                    <div>
-                        <span class="metric">${this.format_metric_name(entry.metric)}</span>: ${this.format_value(entry.metric, entry.value)} (z-score: ${entry.z_score.toFixed(2)})
-                    </div>
-                </div>
+                <tr>
+                    <td>${time_str}</td>
+                    <td>${(entry.metric.includes('cpu') ? entry.value : 0)}</td>
+                    <td>${(entry.metric.includes('temperature') ? entry.value : 0)}</td>
+                    <td>${(entry.metric.includes('used') ? entry.value : 0)}</td>
+                    <td>${(entry.metric.includes('cached') ? entry.value : 0)}</td>
+                </tr>
             `;
         }).join('')
     }
