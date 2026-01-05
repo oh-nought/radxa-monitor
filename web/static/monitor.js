@@ -311,9 +311,9 @@ class Monitor {
     }
 
     add_anomaly(metric, value, z_score, timestamp) {
-        const entry = {metric, value, z_score};
+        const entry = {metric, value, z_score, timestamp};
         const is_duplicate = this.anomaly_log.some(log => 
-            log.metric === metric && Math.abs(log.timestamp - timestamp < 10)
+            log.metric === metric && Math.abs(log.timestamp - timestamp) < 10
         );
 
         if (!is_duplicate) {
@@ -327,37 +327,23 @@ class Monitor {
         }
     }
 
-    render_log(timestamp) {
+    render_log() {
         const log_table = document.getElementById('anomaly-table');
-        if (this.anomaly_log.length === 0) {
-            log_table.innerHTML = '<p style="color: #999; font-size: 13px;">No anomalies detected</p>';
-            return;
-        }
-        const date = new Date(timestamp * 1000);
-        const time_str = date.toLocaleString();
-        let cpu_anomaly;
-        let temp_anomaly;
-        let mem_used_anomaly;
-        let mem_cached_anomaly;
+        
+        this.anomaly_log.forEach(entry => {
+            const time = new Date(entry.timestamp * 1000).toLocaleString();
+            const delta = (entry.value - entry.emwa).toFixed(2);
 
-        this.anomaly_log.map(entry => {
-            cpu_anomaly = (entry.metric.includes('cpu_percent') ? entry.value : 0);
-            temp_anomaly = (entry.metric.includes('temperature_c') ? entry.value : 0);
-            mem_used_anomaly = (entry.metric.includes('memory_used_gb') ? entry.value : 0);
-            mem_cached_anomaly = (entry.metric.includes('memory_cached_gb') ? entry.value : 0);
-        })
-
-        const new_row = `
-        <tr>
-            <td>${time_str}</td>
-            <td>${cpu_anomaly}</td>
-            <td>${temp_anomaly}</td>
-            <td>${mem_used_anomaly}</td>
-            <td>${mem_cached_anomaly}</td>
-        </tr>
-        `
-
-        log_table.insertAdjacentHTML('beforeend', new_row);
+            log_table.insertAdjacentHTML('beforeend', `
+                <tr>
+                    <td>${time}</td>
+                    <td>${this.format_metric_name(entry.metric)}</td>
+                    <td>${this.format_value(entry.metric, entry.value)}</td>
+                    <td>${delta}</td>
+                    <td>${entry.z_score.toFixed(2)}</td>
+                </tr>
+            `);
+        });
     }
 
     format_metric_name(metric) {

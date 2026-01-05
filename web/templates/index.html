@@ -7,49 +7,56 @@
         <link rel="stylesheet" href="../static/style.css">
     </head>
     <body>
+        <header>
+            <h1>radxa zero 3w system monitor</h1>
+
+            <div class="status-indicator" id="connection-status"><span class="dot"></span></div>
+        </header>
+
         <div class="container">
-            <header>
-                <h1>radxa zero 3w system monitor</h1>
-                <div class="status-indicator" id="connection-status">
-                    <span class="dot"></span>
+            <div class="dashboard">
+                <div class="svg-panel">
+                    <div id="svg-container">
+                        <svg id="board-frame"></svg>
+                    </div>
                 </div>
-            </header>
+                <div class="tables-panel">
+                    <div class="metrics-table">
+                        <table id="metric-table">
+                            <h2>metrics<h2>
+                            <tr>
+                                <th>cpu usage</th>
+                                <th>temperature</th>
+                                <th>ram usage</th>
+                                <th>ram cached</th>
+                            </tr>
+                            <tr>
+                                <td id="cpu-value">-</td>
+                                <td id="temp-value">-</td>
+                                <td><span id="ram-value">-</span> (<span id="ram-used">-</span>/<span id="ram-total">-</span>)</td>
+                                <td id="ram-cached">-</td>
+                            </tr>
+                        </table>
+                    </div>
 
-            <div class="content">
-                <div id="svg-container">
-                    <svg id="board-frame"></svg>
-                </div>
+                    <div class="anomaly-log">
+                        <table id="anomaly-table">
+                            <h2>anomalies</h2>
+                            <thead>
+                                <tr>
+                                    <th>time</th>
+                                    <th>metric</th>
+                                    <th>value</th>
+                                    <th>delta</th>
+                                    <th>z-score</th>
+                                </tr>
 
-                <div class="metrics-panel">
-                    <table id ="metric-table">
-                        <h2>metrics<h2>
-                        <tr>
-                            <th>cpu usage</th>
-                            <th>temperature</th>
-                            <th>ram usage</th>
-                            <th>ram cached</th>
-                        </tr>
-                        <tr>
-                            <td id="cpu-value">-</td>
-                            <td id="temp-value">-</td>
-                            <td><span id="ram-value">-</span> (<span id="ram-used">-</span>/<span id="ram-total">-</span>)</td>
-                            <td id="ram-cached">-</td>
-                        </tr>
-                    </table>
+                            </thead>
+                        </table>
+                    </div>
 
-                    <table id="anomaly-table">
-                        <h2>anomalies</h2>
-                        <tr>
-                            <th>time</th>
-                            <th>cpu usage</th>
-                            <th>temperature</th>
-                            <th>ram usage</th>
-                            <th>ram cached</th>
-                        </tr>
-                    </table>
                 </div>
             </div>
-
         </div>
 
         <script src="../static/monitor.js"></script>

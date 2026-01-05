@@ -9,10 +9,6 @@ body {
     padding: 20px;
 }
 
-.container {
-    margin: 0 auto;
-}
-
 .status-indicator {
     display: flex;
     align-items: center;
@@ -46,26 +42,58 @@ header {
     50% { opacity: 0.5; }
 }
 
-.content {
+.container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    padding: 40px 20px;
 }
 
-#svg-container {
+.dashboard {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 24px;
+    width: 100%;
+    max-width: 1200px;
+    align-items: start;
+}
+
+.svg-panel {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#svg-container svg {
+#svg-container {
     width: 100%;
-    height: auto;
-    max-height: 655px;
+    max-width: 450px;
 }
+
+.tables-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.anomaly-log {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.anomaly-log table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.anomaly-log th, .anomaly-log td {
+    padding: 6px, 8px;
+    font-size: 13px;
+    text-align: right;
+}
+
 
 table {
     border-collapse: collapse;
-}
+} 
 
 td, th {
     border: 1px solid;
@@ -74,4 +102,18 @@ td, th {
 
 td {
     text-align: center;
+} 
+
+@media (max-width: 900px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .svg-panel {
+        order: 1;
+    }
+
+    .tables-panel {
+        order: 2;
+    }
 }
