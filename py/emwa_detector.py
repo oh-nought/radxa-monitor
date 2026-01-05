@@ -4,7 +4,7 @@ class EMWADetector:
     # emwa = alpha * data point + (1 - alpha) * prev_emwa
     # used to find trends in time dependent data
 
-    def __init__(self, alpha=0.1, threshold=3.0):
+    def __init__(self, alpha=0.1, threshold=2.0):
         self.alpha = alpha # our decay factor; the higher, the more reactive it is
         self.threshold = threshold # what constitutes an anomaly
         self.emwa = None
