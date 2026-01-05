@@ -61,7 +61,8 @@ class Monitor:
                             z_score = self.detectors[metric_name].get_z_score(value)
                             self.current_data['anomalies'][metric_name] = {
                                 "value": value,
-                                "z_score": z_score
+                                "z_score": z_score,
+                                "emwa": self.detectors[metric_name].emwa
                             }
                 
                 await self.broadcast(self.current_data)
