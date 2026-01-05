@@ -9,16 +9,20 @@ class EMWADetector:
         self.threshold = threshold # what constitutes an anomaly
         self.emwa = None
         self.variance = None
+        self.samples = 0 # will be used to simulate a "warm up"; if there aren't a certain number of samples, anomalies can't be detected 
 
     def update(self, value):
+        self.samples += 1
+
         if self.emwa is None: # initialization
             self.emwa = value
             self.variance = 0
-        else:
-            prev_emwa = self.emwa
-            prev_variance = self.variance
-            self.emwa = self.alpha * value + (1 - self.alpha) * prev_emwa
-            self.variance = self.alpha * (value - self.emwa) ** 2 + (1-self.alpha) * prev_variance
+            return
+        
+        delta = value - self.emwa
+        self.emwa = self.emwa + self.alpha * delta
+
+        self.variance = (1 - self.alpha) * (self.variance + self.alpha * delta * delta)
         
     def get_z_score(self, value):
         if self.emwa is None or self.variance == 0:
@@ -31,6 +35,9 @@ class EMWADetector:
         return abs(value - self.emwa) / stdev
     
     def is_anomaly(self, value):
+        if self.samples < 20:
+            return False
+        
         z_score = self.get_z_score(value)
         return z_score > self.threshold
     
