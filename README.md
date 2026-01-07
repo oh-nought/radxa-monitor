@@ -4,6 +4,7 @@ Monitor your Radxa (or other SBC) and discover bottlenecks.
 <img width="1520" height="833" alt="Radxa Monitor Demo" src="https://github.com/user-attachments/assets/bf5bc322-b623-4cef-bd0f-05d5faccf045" />
 
 ## Quickstart
+*Note: this tutorial assumes you are running a Linux distro on your SBC.*
 ### Using start.sh
 Soon™
 ### Manual
@@ -63,3 +64,4 @@ curl http://localhost:5000/api/current
 
 curl http://<radxa-ip>:5000/api/current
 ```
+
