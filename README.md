@@ -5,9 +5,6 @@ Monitor your Radxa (or other SBC) and discover bottlenecks.
 
 ## Quickstart
 *Note: this tutorial assumes you are running a Linux distro on your SBC.*
-### Using start.sh
-Soon™
-### Manual
 
 1. Navigate to your folder and clone the repo:
 ```bash
@@ -64,4 +61,5 @@ curl http://localhost:5000/api/current
 
 curl http://<radxa-ip>:5000/api/current
 ```
+
 
